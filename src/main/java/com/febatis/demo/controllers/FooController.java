@@ -1,9 +1,7 @@
 package com.febatis.demo.controllers;
 
-import com.febatis.demo.adapter.FooAdapter;
 import com.febatis.demo.model.dto.FooRequestDTO;
 import com.febatis.demo.model.dto.FooResponseDTO;
-import com.febatis.demo.model.entity.Foo;
 import com.febatis.demo.service.FooService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;

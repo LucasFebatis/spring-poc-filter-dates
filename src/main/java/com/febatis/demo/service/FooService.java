@@ -8,6 +8,7 @@ import com.febatis.demo.model.entity.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,6 +32,26 @@ public class FooService {
     public FooResponseDTO findByNameManually(String name) {
         Optional<Foo> foo = repository.retrieveByName(name);
         return foo.map(FooAdapter::toResponse).orElse(null);
+    }
+
+    public List<FooResponseDTO> findAllByInitialDateBetween() {
+
+        LocalDate start = LocalDate.of(2023, 1, 17);
+        LocalDate end = LocalDate.of(2023, 1, 20);
+
+        List<Foo> foo = repository.findAllByInitialDateBetween(start, end);
+        return foo.stream().map(FooAdapter::toResponse).collect(Collectors.toList());
+    }
+
+    public List<FooResponseDTO> findAllBetweenInitialDateAndFinishedDateWithParam() {
+        LocalDate now = LocalDate.now();
+        List<Foo> foo = repository.findAllBetweenInitialDateAndFinishedDateWithParam(now);
+        return foo.stream().map(FooAdapter::toResponse).collect(Collectors.toList());
+    }
+
+    public List<FooResponseDTO> findAllBetweenInitialDateAndFinishedDateWithoutParam() {
+        List<Foo> foo = repository.findAllBetweenInitialDateAndFinishedDateWithoutParam();
+        return foo.stream().map(FooAdapter::toResponse).collect(Collectors.toList());
     }
 
     public FooResponseDTO createFoo(FooRequestDTO request) {

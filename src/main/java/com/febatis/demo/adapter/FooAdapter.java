@@ -9,6 +9,9 @@ public class FooAdapter {
     public static Foo toEntity(FooRequestDTO requestDTO) {
         return Foo.builder()
                 .name(requestDTO.getName())
+                .enabled(requestDTO.getEnabled())
+                .initialDate(requestDTO.getInitialDate())
+                .finishedDate(requestDTO.getFinishedDate())
                 .build();
     }
 
@@ -16,6 +19,9 @@ public class FooAdapter {
         return FooResponseDTO.builder()
                 .uuid(entity.getUuid())
                 .name(entity.getName())
+                .enabled(entity.getEnabled())
+                .initialDate(entity.getInitialDate())
+                .finishedDate(entity.getFinishedDate())
                 .build();
     }
 }

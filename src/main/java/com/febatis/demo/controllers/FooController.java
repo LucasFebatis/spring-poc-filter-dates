@@ -31,6 +31,21 @@ public class FooController {
         return service.findByNameManually(name);
     }
 
+    @GetMapping("/find-by-initial-date-between")
+    public List<FooResponseDTO> findAllByInitialDateBetween(){
+        return service.findAllByInitialDateBetween();
+    }
+
+    @GetMapping("/find-by-active-with-param")
+    public List<FooResponseDTO> findAllBetweenInitialDateAndFinishedDateWithParam(){
+        return service.findAllBetweenInitialDateAndFinishedDateWithParam();
+    }
+
+    @GetMapping("/find-by-active-without-param")
+    public List<FooResponseDTO> findAllBetweenInitialDateAndFinishedDateWithoutParam(){
+        return service.findAllBetweenInitialDateAndFinishedDateWithoutParam();
+    }
+
     @PostMapping()
     public FooResponseDTO createFoo(@RequestBody FooRequestDTO fooToCreate) {
         return service.createFoo(fooToCreate);
